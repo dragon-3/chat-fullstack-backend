@@ -14,7 +14,9 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
     cors: {
-        origin: 'https://chat-fullstack.vercel.app/',
+        origin: "https://chat-fullstack.vercel.app/",
+        credentials: true, allowEIO3: true , 
+        transport: ['websocket'],
         methods: ["GET", "POST"]
     }
 })

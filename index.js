@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const http = require('http');
 const cors = require('cors');
-const {Server} = require('socket.io');
+const socketio = require('socket.io');
 
 const router = require('./router');
 
@@ -12,12 +12,7 @@ app.use(cors());
 
 const server = http.createServer(app);
 
-const io = new Server(server, {
-    cors: {
-        origin: 'http://localhost:3000',
-        methods: ["GET", "POST"]
-    }
-})
+const io = socketio(server)
 
 io.on("connection", (socket) => {
     console.log(`User has connected with id: ${socket.id}`)

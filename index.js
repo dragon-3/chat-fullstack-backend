@@ -14,10 +14,10 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
     cors: {
-        origin: "https://chat-fullstack.vercel.app/",
+        origin: "*",
         
-        transport: ['websocket'],
-        
+        // transport: ['websocket'],
+        methods: ["GET", "POST"]
     }
 })
 
